@@ -1,7 +1,7 @@
 [package]
 name = "data-racer"
 authors =["Victor Alan Varela"]
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Is a true random number generator that uses data races to generate random numbers"
 license = "MIT"
