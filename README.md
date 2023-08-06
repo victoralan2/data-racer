@@ -68,8 +68,8 @@ fn main() {
 ## Contributing
 Please feel free to contribute by creating a pull request to submit the code you would like to be included.
 
-You are very welcome to give us bug fixes and improvements in the form of a [GitHub Pull Request](https://github.com/TheDracon/data-racer/pulls).
+You are very welcome to give us bug fixes and improvements in the form of a [GitHub Pull Request](https://github.com/victoralan2/data-racer/pulls).
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/TheDracon/data-racer/blob/master/LICENSE.txt) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/victoralan2/data-racer/blob/master/LICENSE.txt) file for details.
 
