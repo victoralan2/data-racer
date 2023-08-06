@@ -46,7 +46,7 @@ impl DataraceRNG {
                 let t = spawn(move || {
                     for e in 0..1024 {
                         let state_value = *state.load(Ordering::Relaxed);
-                        let new_value = Self::basic_hash(!1945678154678958719829601872597819u128.wrapping_mul(i.wrapping_shr(e) as u128).wrapping_shl(e.wrapping_pow(i)) as u128 ^ state_value);
+                        let new_value = Self::basic_hash(!1945678154678958719829601872597819u128.wrapping_mul(i.wrapping_shr(e) as u128).wrapping_shl(e.wrapping_pow(i)) ^ state_value);
                         let mut newer_value = u128::from_le_bytes(new_value.to_be_bytes());
                         state.store(&mut newer_value, Ordering::Release);
                     }
