@@ -56,7 +56,6 @@ impl DataraceRNG {
             for thread in thread_pool{
                 thread.join().unwrap();
             }
-            sleep(Duration::new(0, 100000000));
             *state.load(Ordering::Relaxed)
         }
     }
