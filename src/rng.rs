@@ -85,13 +85,9 @@ impl DataraceRNG {
 
     pub fn gen_range<T, R>(&mut self, range: R) -> T
         where T: SampleUniform, R: SampleRange<T>,{
-        let mut rng = self.get_generator();
+        let mut rng = StdRng::from_seed(Self::blake3_raw(self.result()));
         self.mutate();
         rng.gen_range(range)
-    }
-    fn get_generator(&self) -> StdRng {
-        let rng = StdRng::from_seed(Self::blake3_raw(self.result()));
-        rng
     }
 }
 impl RngCore for DataraceRNG {
