@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicPtr, Ordering};
-use std::thread::spawn;
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::thread::{sleep, spawn};
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 use rand::{Rng, RngCore, SeedableRng};
 use rand::distributions::{Distribution, Standard};
@@ -45,11 +45,10 @@ impl DataraceRNG {
                 let state = state.clone();
                 let t = spawn(move || {
                     for e in 0..1024 {
-                        std::hint::black_box(&state);
                         let state_value = *state.load(Ordering::Relaxed);
-
-                        let mut new_value = state_value ^ Self::basic_hash(!1945678154678958719829601872597819u128.wrapping_mul(i.wrapping_shr(e) as u128).wrapping_shl(e.wrapping_pow(i)) as u128);
-                        state.store(&mut new_value, Ordering::Relaxed);
+                        let new_value = Self::basic_hash(!1945678154678958719829601872597819u128.wrapping_mul(i.wrapping_shr(e) as u128).wrapping_shl(e.wrapping_pow(i)) as u128 ^ state_value);
+                        let mut newer_value = u128::from_le_bytes(new_value.to_be_bytes());
+                        state.store(&mut newer_value, Ordering::Release);
                     }
                 });
                 thread_pool.push(t);
@@ -57,6 +56,7 @@ impl DataraceRNG {
             for thread in thread_pool{
                 thread.join().unwrap();
             }
+            sleep(Duration::new(0, 100000000));
             *state.load(Ordering::Relaxed)
         }
     }
@@ -121,11 +121,4 @@ fn slice_to_fixed_array(source_slice: &[u8]) -> [u8; 16] {
     target_array[..slice_len].copy_from_slice(&source_slice[..slice_len]);
 
     target_array
-}
-
-#[test]
-fn test() {
-    for i in 0.. {
-        println!("{}", DataraceRNG::data_race(12))
-    }
 }
