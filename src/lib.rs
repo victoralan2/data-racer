@@ -1,4 +1,3 @@
-use std::{thread};
 use std::sync::Arc;
 use std::sync::atomic::{AtomicPtr, Ordering};
 use std::thread::spawn;
@@ -18,13 +17,13 @@ impl Default for DataraceRNG {
         let seed = start
             .duration_since(UNIX_EPOCH)
             .expect("Time went backwards").as_nanos();
-        let state = Self::basic_hash(seed);;
+        let state = Self::basic_hash(seed);
         Self { state }
     }
 }
 impl DataraceRNG {
     pub fn new(seed: u128) -> Self {
-        let state = Self::basic_hash(seed);;
+        let state = Self::basic_hash(seed);
         Self { state }
     }
     fn basic_hash(seed: u128) -> u128 {
@@ -46,7 +45,9 @@ impl DataraceRNG {
                 let state = state.clone();
                 let t = spawn(move || {
                     for e in 0..1024 {
+                        std::hint::black_box(&state);
                         let state_value = *state.load(Ordering::Relaxed);
+
                         let mut new_value = state_value ^ Self::basic_hash(!1945678154678958719829601872597819u128.wrapping_mul(i.wrapping_shr(e) as u128).wrapping_shl(e.wrapping_pow(i)) as u128);
                         state.store(&mut new_value, Ordering::Relaxed);
                     }
@@ -120,4 +121,11 @@ fn slice_to_fixed_array(source_slice: &[u8]) -> [u8; 16] {
     target_array[..slice_len].copy_from_slice(&source_slice[..slice_len]);
 
     target_array
+}
+
+#[test]
+fn test() {
+    for i in 0.. {
+        println!("{}", DataraceRNG::data_race(12))
+    }
 }

@@ -7,17 +7,20 @@ description = "Is a true random number generator that uses data races to generat
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+opt-level = 0
 
 [dependencies]
 rand = "0.8.5"
 blake3 = "1.4.1"
+
 [profile.release]
 opt-level = 0
 
 [profile.dev]
 opt-level = 0
+mir-opt-level = 0
+
 
 [lib]
-name = "dataracer"
-path = "src/lib.rs"
 opt-level = 0
+mir-opt-level = 0
