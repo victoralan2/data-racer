@@ -14,7 +14,12 @@ If you inteand to use this crate please read the following sections:
 Everything said in this document beyond this point is a not proven to be true.**
 
 ## Overview
-Data-racer is an experimental project aimed at generating random numbers using a unique approach based on data races. It leverages the inherent unpredictability of data race conditions in multithreaded environments to generate a random and non-deterministic behaviour. However, it's important to note that this approach is highly experimental and may have security implications that are not yet fully understood.
+Data-racer is an experimental project aimed at generating random numbers using a unique approach based on data races.
+
+It leverages the inherent unpredictability of data race conditions in multithreaded environments to generate a random and non-deterministic behaviour.
+However, it's important to note that this approach is highly experimental and may have security implications that are not yet fully understood.
+
+To understand this algorithm better and its security implications please read the [Security of the algorithm](#security-of-the-algorithm) section.
 
 ## Getting Started
 To use Data-racer in your project you can add the following lines to your Cargo.toml:
@@ -81,6 +86,7 @@ Arcetri Team) and has passed all of the tests, scoring `188/188`. (The function 
 
 So the raw data-race-based random number generator is statistically secure according to the [NIST Statistical Test Suite improved version](https://github.com/arcetri/sts).
 
+Last but not least, this generator uses a very fast cryptographic hashing algorithm (blake3) that is used to produce the seed so that should improve the security some bit.
 ## Contributing
 Please feel free to contribute by creating a pull request to submit the code you would like to be included.
 

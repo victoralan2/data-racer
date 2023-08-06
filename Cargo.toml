@@ -7,7 +7,6 @@ description = "Is a true random number generator that uses data races to generat
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-opt-level = 0
 
 [dependencies]
 rand = "0.8.5"

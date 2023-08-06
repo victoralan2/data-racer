@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicPtr, Ordering};
-use std::thread::{sleep, spawn};
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::thread::{spawn};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 use rand::{Rng, RngCore, SeedableRng};
 use rand::distributions::{Distribution, Standard};
