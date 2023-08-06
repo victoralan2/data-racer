@@ -16,3 +16,8 @@ opt-level = 0
 
 [profile.dev]
 opt-level = 0
+
+[lib]
+name = "dataracer"
+path = "src/lib.rs"
+opt-level = 0
