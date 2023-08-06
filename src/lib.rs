@@ -1,12 +1,6 @@
 mod rng;
-use std::time::{SystemTime, UNIX_EPOCH};
 use rand::{Rng};
-use crate::rng::DataraceRNG;
-#[test]
-fn performance_test() {
-
-}
-
+use rng::DataraceRNG;
 
 
 fn main() {
