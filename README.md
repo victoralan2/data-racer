@@ -5,8 +5,8 @@ If you inteand to use this crate please read the following sections:
 <ol>
     <b>
     <li><a href="#warning">Warning</a></li>
-    <li><a href="#contributing">Overview</a></li>
-    <li><a href="#Security of the algorithm">Security of the algorithm</a></li> 
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#security\ of\ the\ algorithm">Security of the algorithm</a></li> 
     </b>
 </ol>
 
