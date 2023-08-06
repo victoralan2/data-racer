@@ -1,12 +1,12 @@
 # Data-Racer
+<i>
 If you inteand to use this crate please read the following sections:
 <ol>
-    <b>
     <li><a href="#warning">Warning</a></li>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="r#security-of-the-algorithm">Security of the algorithm</a></li> 
-    </b>
+    <li><a href="#security-of-the-algorithm">Security of the algorithm</a></li> 
 </ol>
+</i>
 
 ## Warning
 
