@@ -7,7 +7,7 @@ use rand::{Rng, RngCore, SeedableRng};
 use rand::distributions::{Distribution, Standard};
 use rand::distributions::uniform::{SampleRange, SampleUniform};
 use rand::rngs::StdRng;
-
+#[derive(Clone)]
 pub struct DataraceRNG {
     state: u128,
 }
