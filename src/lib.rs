@@ -121,3 +121,10 @@ fn slice_to_fixed_array(source_slice: &[u8]) -> [u8; 16] {
 
     target_array
 }
+
+#[test]
+pub fn test() {
+    let mut rng = DataraceRNG::default();
+    let a: u32 = rng.gen();
+    println!("HELLO WORLD! {}", a);
+}

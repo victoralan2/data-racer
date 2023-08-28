@@ -1,6 +1,5 @@
 # Data-Racer
-
-## 
+### THIS CRATE IS BROKEN IN THE CURRENT VERSION OF RUST BECAUSE OF SOME CHANGE RECENTLY MADE IN THE COMPILER AND WILL PROBABLY PANIC WITH AN "exit code: 0xc0000005, STATUS_ACCESS_VIOLATION" Error.
 
 <i>
 If you inteand to use this crate please read the following sections:
